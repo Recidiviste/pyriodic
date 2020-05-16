@@ -14,8 +14,15 @@
 - [ ] Add help message
 
 ## Interface
-- [ ] Add menus
-  - [ ] Main Menu
-  - [ ] Type of searching menu
+- [x] Add menus
+  - [x] Main Menu
+  - [x] Type of searching menu
   - [ ] Searchs Menus
 - [ ] Add help for each menu
+  - [x] Main Menu
+  - [x] Type of searching menu
+  - [ ] Searchs Menus
+
+## Prompts
+
+zsh:1: command not found: q
