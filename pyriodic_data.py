@@ -4,13 +4,17 @@ import requests
 class Element():
     def __init__(self, dico):
         for i in dico.keys():
-            exec('self.' + i + ' =  dico[i]')
+            setattr(self, i, dico[i])
 
     def display(self):
-        c = []
-        dc = [
-        for i in vars(self):
-            c.append(i)
+        l = ["symbol", "atomicMass", "yearDiscovered", "boilingPoint", "atomicRadius", "ionRadius", "bondingType", "electronAffinity", "vanDelWaalsRadius", "electronegativity"]
+        r = ["name", "atomicNumber", "groupBlock", "standardState", "meltingPoint", "density", "ionizationEnergy", "oxidationStates", "electronicConfiguration", "cpkHexColor"]
+        dl = ["Symbol: ", "Atomic Mass: ", "Discovered in: ", "Boiling at: ", "Atomic Radius: ", "Ion Radius: ", "Bonding Type: ", "Electron Affinity: ", "VanDerWaals Radius: ", "Electronegativity: "]
+        dr = ["Name: ", "Atomic Number: ", "Group and Block: ", "Standard State: ", "Melting Point: ", "Density: ", "Ionization Energy: ", "Oxidation States: ", "Electronic Configuration: ", "Hexadecimal Color: "]
+        for i in range(10):
+            ltext = dl[i] + getattr(self, l[i])
+            rtext = dr[i] + getattr(self, r[i])
+            print(f"{ltext:<30}\t{rtext:<70}")
 
 def get_info(dtype, parameter):
     if dtype in ["atomicNumber", "atomicName", "atomicSymbol"]:
@@ -24,9 +28,16 @@ def get_info(dtype, parameter):
         return("dtype error")
 
 
-if __name__ == "__main__":
-    parameter = input("What number ? :")
-    telement = Element(get_info("atomicNumber", parameter))
-    exec( telement.name + " = telement ")
-    del telement
-    Hydrogen.display()
+def print_info(dtype, parameter):
+    raw = get_info(dtype, parameter)
+    if type(raw) == "<class 'str'>":
+        if raw == "dtype error":
+            print('Error with the search argument')
+        else:
+            print(raw)
+    else:
+        el = Element(raw)
+        el.display()
+
+if __name__ == '__main__':
+    print_info("atomicNumber", "1")

@@ -22,7 +22,10 @@
   - [x] Main Menu
   - [x] Type of searching menu
   - [ ] Searchs Menus
+- [ ] Add history
+- [ ] Add support of TAB and arrows
 
-## Prompts
-
-zsh:1: command not found: q
+## Code
+- [ ] Rewrite everything to stop using `exec`
+  - [x] Rewrite pyriodic_data
+  - [ ] Rewrite pyriodic_interface
