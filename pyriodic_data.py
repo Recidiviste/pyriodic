@@ -12,9 +12,15 @@ class Element():
         dl = ["Symbol: ", "Atomic Mass: ", "Discovered in: ", "Boiling at: ", "Atomic Radius: ", "Ion Radius: ", "Bonding Type: ", "Electron Affinity: ", "VanDerWaals Radius: ", "Electronegativity: "]
         dr = ["Name: ", "Atomic Number: ", "Group and Block: ", "Standard State: ", "Melting Point: ", "Density: ", "Ionization Energy: ", "Oxidation States: ", "Electronic Configuration: ", "Hexadecimal Color: "]
         for i in range(10):
-            ltext = dl[i] + getattr(self, l[i])
-            rtext = dr[i] + getattr(self, r[i])
-            print(f"{ltext:<30}\t{rtext:<70}")
+            if getattr(self, l[i]) != '':
+                ltext = dl[i] + getattr(self, l[i])
+            else:
+                ltext = dl[i] + '\033[91mNo Information\033[0m'
+            if getattr(self, r[i]) != '':
+                rtext = dr[i] + getattr(self, r[i])
+            else:
+                rtext = dr[i] + '\033[91mNo Information\033[0m'
+            print(f"{ltext:<34}\t{rtext:<70}")
 
 def get_info(dtype, parameter):
     if dtype in ["atomicNumber", "atomicName", "atomicSymbol"]:
